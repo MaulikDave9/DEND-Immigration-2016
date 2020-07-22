@@ -1,0 +1,10 @@
+Port Forwarding:
+
+/home/workspace# scp -i .aws/spark-cluster.pem .aws/spark-cluster.pem hadoop@ec2-xx-yyy-zzz-ppp.us-west-2.compute.amazonaws.com:/home/hadoop/
+/home/workspace# scp -i .aws/spark-cluster.pem  dl.cfg hadoop@ec2-xx-yyy-zzz-ppp.us-west-2.compute.amazonaws.com:/home/hadoop/
+/home/workspace# scp -i .aws/spark-cluster.pem  etl.py hadoop@ec2-xx-yyy-zzz-ppp.us-west-2.compute.amazonaws.com:/home/hadoop/
+
+Connect to the Master Node Using SSH:
+
+sudo apt-get install openssh-client
+ssh -i .aws/spark-cluster.pem  hadoop@ec2-xx-yyy-zzz-ppp.us-west-2.compute.amazonaws.com
