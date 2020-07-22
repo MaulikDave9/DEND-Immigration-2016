@@ -89,7 +89,7 @@ in context with US city/state demographics.
 
 #### Data Model
 
-![ERD](Immigration-ERD.jpg)
+![ERD](Miscellaneous/Immigration-ERD.jpg)
 Star schema:  
 "immigration_table" is a fact table with most relevant busienss data and 
 "immigrant_table","airport_table", "city_table" are supporting dimension tables.
@@ -179,12 +179,13 @@ This would not have been possible from the raw data in different file formats su
     (4) dl-config.cfg - AWS credentials and Input/Output data paths
                      
 
-#### How to Run
+#### How to Run Spark Job:
     
-     (1) Set up AWS EMR to run Spark job
-     (2) Change dl_config.cfg to dl.cfg and add AWS credentials.
-         (S3 buckets with input/output are not public access)
-     (3) Run "python immigration-etl.py" 
+     (1) Set up EC2 with AWS EMR to run Spark Job
+     (2) Connect to the Master Node Using SSH: ssh -i .aws/spark-cluster.pem hadoop@ec2-xx-yy-zzz-pp.us-west-2.compute.amazonaws.com
+     (3) Copy relevant files from local machine to EC2 
+         scp -i .aws/spark-cluster.pem  etl.py hadoop@ec2-xx-yyy-zzz-ppp.us-west-2.compute.amazonaws.com:/home/hadoop/
+     (4) [hadoop@ip-xx-yy-zzz-pp ~]$ /usr/bin/spark-submit --master yarn ./immigration-etl.py
      
      
 #### References
